@@ -34,3 +34,4 @@
 #visual stuidio
 .vs/
 out/
+CMakeSettings.json

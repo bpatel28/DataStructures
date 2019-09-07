@@ -1,9 +1,12 @@
-﻿# CMakeList.txt : Top-level CMake project file, do global configuration
-# and include sub-projects here.
-#
 cmake_minimum_required (VERSION 3.8)
 
-project ("linked_list")
+project(proj_linked_list)
 
-# Include sub-projects.
-add_subdirectory ("linked_list")
+set(SOURCE main.cpp)
+add_executable(proj_linked_list ${SOURCE})
+
+include_directories(src)
+
+add_subdirectory(src)
+
+target_link_libraries(proj_linked_list linked_list_lib)
