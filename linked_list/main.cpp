@@ -25,7 +25,6 @@ int main()
 
 		list->reverse();
 
-
 		while (list->count() != 0)
 			std::cout << list->pop_front() << " ";
 		std::cout << std::endl;

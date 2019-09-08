@@ -21,7 +21,7 @@ namespace my_lib {
 
 	//return count.
 	template <class T>
-	int LinkedList<T>::count() const
+	size_t LinkedList<T>::count() const
 	{
 		return m_count;
 	}
@@ -231,15 +231,18 @@ namespace my_lib {
 	template<class T>
 	void LinkedList<T>::reverse()
 	{
-		auto* p_curr_head = mp_head;
-		auto* p_curr_tail = mp_tail;
-		for (int i = 0; i < m_count / 2; i++)
-		{
-			T temp_data = p_curr_head->get_data();
-			p_curr_head->set_data(p_curr_tail->get_data());
-			p_curr_tail->set_data(temp_data);
-			p_curr_head = p_curr_head->get_next();
-			p_curr_tail = p_curr_tail->get_prev();
+		LinkedListNode<T> *p_prev = nullptr;
+		LinkedListNode<T> *p_curr = mp_head;
+		LinkedListNode<T> *p_next = nullptr;
+		while (p_curr) {
+			p_next = p_curr->get_next();
+			p_curr->set_next(p_prev);
+			p_curr->set_prev(p_next);
+			p_prev = p_curr;
+			p_curr = p_next;
 		}
+		mp_tail = mp_head;
+		mp_head = p_prev;
 	}
+
 }

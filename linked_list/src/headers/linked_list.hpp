@@ -18,7 +18,7 @@ namespace my_lib {
 		~LinkedList();
 
 		//returns no of items in list
-		int count() const;
+		size_t count() const;
 		//add item at the tail of the list
 		void push_back(const T &t_data);
 		//remove item from the tail of the list
@@ -55,7 +55,7 @@ namespace my_lib {
 	private:
 		LinkedListNode<T> *mp_head;
 		LinkedListNode<T> *mp_tail;
-		int m_count;
+		size_t m_count;
 	};
 
 }
