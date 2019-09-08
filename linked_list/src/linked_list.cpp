@@ -9,26 +9,26 @@ namespace my_lib {
 	template <class T>
 	LinkedList<T>::~LinkedList()
 	{
-		LinkedListNode<T> *current = mp_head;
-		LinkedListNode<T> *next = nullptr;
-		while (current)
+		LinkedListNode<T> *p_current = mp_head;
+		LinkedListNode<T> *p_next = nullptr;
+		while (p_current)
 		{
-			next = current->get_next();
-			delete current;
-			current = next;
+			p_next = p_current->GetNext();
+			delete p_current;
+			p_current = p_next;
 		}
 	}
 
 	//return count.
 	template <class T>
-	size_t LinkedList<T>::count() const
+	size_t LinkedList<T>::Count() const
 	{
 		return m_count;
 	}
 
 	//push item at the tail of the list.
 	template<class T>
-	void LinkedList<T>::push_back(const T& t_data)
+	void LinkedList<T>::PushBack(const T& t_data)
 	{
 		auto *data = new LinkedListNode<T> { t_data };
 
@@ -39,21 +39,21 @@ namespace my_lib {
 		}
 		else
 		{
-			mp_tail->set_next(data);
+			mp_tail->SetNext(data);
 			auto p_prev = mp_tail;
-			mp_tail = mp_tail->get_next();
-			mp_tail->set_prev(p_prev);
+			mp_tail = mp_tail->GetNext();
+			mp_tail->SetPrev(p_prev);
 		}
 		m_count++;
 	}
 
 	//pop item from tail of the list.
 	template<class T>
-	T LinkedList<T>::pop_back() 
+	T LinkedList<T>::PopBack() 
 	{
 		if (!mp_tail) throw std::runtime_error("Empty List.");
-		auto p_data = mp_tail->get_data();
-		auto p_prev = mp_tail->get_prev();
+		auto p_data = mp_tail->GetData();
+		auto p_prev = mp_tail->GetPrev();
 		delete mp_tail;
 		mp_tail = p_prev;
 		if (m_count == 1) mp_head = p_prev;
@@ -63,30 +63,30 @@ namespace my_lib {
 
 	//return item at the tail of the list.
 	template<class T>
-	T LinkedList<T>::peek_back() const
+	T LinkedList<T>::PeekBack() const
 	{
 		if (!mp_tail) throw "Empty List.";
-		auto data = mp_tail->get_data();
+		auto data = mp_tail->GetData();
 		return data;
 	}
 
 	//add item at the tail of the list.
 	template<class T>
-	void LinkedList<T>::add_last(const T &t_data)
+	void LinkedList<T>::AddLast(const T &t_data)
 	{
-		push_back(t_data);
+		PushBack(t_data);
 	}
 
 	//remove item frome tail of the list.
 	template<class T>
-	T LinkedList<T>::remove_last()
+	T LinkedList<T>::RemoveLast()
 	{
-		return pop_back();
+		return PopBack();
 	}
 
 	//push element at front
 	template<class T>
-	void LinkedList<T>::push_front(const T &t_data) {
+	void LinkedList<T>::PushFront(const T &t_data) {
 		if (!mp_head)
 		{
 			mp_head = new LinkedListNode<T>{ t_data };
@@ -95,8 +95,8 @@ namespace my_lib {
 		else
 		{
 			auto* p_data = new LinkedListNode<T>{ t_data };
-			p_data->set_next(mp_head);
-			mp_head->set_prev(p_data);
+			p_data->SetNext(mp_head);
+			mp_head->SetPrev(p_data);
 			mp_head = p_data;
 		}
 		m_count++;
@@ -104,11 +104,11 @@ namespace my_lib {
 
 	//remove element from front
 	template<class T>
-	T LinkedList<T>::pop_front() 
+	T LinkedList<T>::PopFront() 
 	{
 		if (!mp_head) throw std::runtime_error("Empty List.");
-		auto data = mp_head->get_data();
-		auto* p_next = mp_head->get_next();
+		auto data = mp_head->GetData();
+		auto* p_next = mp_head->GetNext();
 		delete mp_head;
 		mp_head = p_next;
 		if (m_count == 1) mp_tail = p_next;
@@ -118,50 +118,50 @@ namespace my_lib {
 
 	//show first element
 	template<class T>
-	T LinkedList<T>::peek_first() const
+	T LinkedList<T>::PeekFront() const
 	{
 		if (!mp_head) throw std::runtime_error("Empty List.");
-		auto data = mp_head->get_data();
+		auto data = mp_head->GetData();
 		return data;
 	}
 
 	//add element to the head
 	template<class T>
-	void LinkedList<T>::add_first(const T& t_data)
+	void LinkedList<T>::AddFirst(const T& t_data)
 	{
-		push_front(t_data);
+		PushFront(t_data);
 	}
 
 	//remove element from the head
 	template<class T>
-	T LinkedList<T>::remove_first()
+	T LinkedList<T>::RemoveFirst()
 	{
-		return pop_front();
+		return PopFront();
 	}
 
 	//insert element at specified index
 	template<class T>
-	void LinkedList<T>::insert_at(int t_index, const T& t_data)
+	void LinkedList<T>::InsertAt(int t_index, const T& t_data)
 	{
 		if (t_index < 0 || t_index > m_count) throw std::runtime_error("Index Out of Range.");
 		if (t_index == m_count) 
 		{
-			push_back(t_data);
+			PushBack(t_data);
 		}
 		else if (t_index == 0)
 		{
-			add_first(t_data);
+			AddFirst(t_data);
 		}
 		else
 		{
 			LinkedListNode<T>* p_curr = mp_head;
 			for (size_t i = 1; i != t_index; i++)
 			{
-				p_curr = p_curr->get_next();
+				p_curr = p_curr->GetNext();
 			}
 			auto* p_data = new LinkedListNode<T>{ t_data };
-			p_data->set_prev(p_curr->get_prev());
-			p_data->set_next(p_curr);
+			p_data->SetPrev(p_curr->GetPrev());
+			p_data->SetNext(p_curr);
 			p_curr = p_data;
 			m_count++;
 		}
@@ -169,19 +169,19 @@ namespace my_lib {
 
 	//removed element from at index
 	template<class T>
-	T LinkedList<T>::remove_at(int t_index)
+	T LinkedList<T>::RemoveAt(int t_index)
 	{
 		if (t_index < 0 || t_index > m_count) throw std::runtime_error("Index Out of Range.");
-		if (t_index == m_count) return pop_back();
-		if (t_index == 0) return remove_first();
+		if (t_index == m_count) return PopBack();
+		if (t_index == 0) return RemoveFirst();
 		LinkedListNode<T>* p_curr = mp_head;
 		for (size_t i = 1; i != t_index; i++)
 		{
-			p_curr = p_curr->get_next();
+			p_curr = p_curr->GetNext();
 		}
 		auto *p_data = p_curr;
-		auto data = p_data->get_data();
-		p_curr->set_prev(p_curr->get_next());
+		auto data = p_data->GetData();
+		p_curr->SetPrev(p_curr->GetNext());
 		delete p_data;
 		m_count--;
 		return data;
@@ -192,26 +192,26 @@ namespace my_lib {
 	T LinkedList<T>::operator[](int t_index) const
 	{
 		if (t_index < 0 || t_index >= m_count) throw std::runtime_error("Index Out of Range.");
-		if (t_index == m_count - 1) return peek_back();
-		if (t_index == 0) return peek_first();
+		if (t_index == m_count - 1) return PeekBack();
+		if (t_index == 0) return PeekFront();
 		LinkedListNode<T>* p_curr = mp_head;
 		for (size_t i = 1; i != t_index; i++)
 		{
-			p_curr = p_curr->get_next();
+			p_curr = p_curr->GetNext();
 		}
-		return p_curr->get_data();
+		return p_curr->GetData();
 	}
 
 	//clear all the items from the list
 	template<class T>
-	void LinkedList<T>::clear()
+	void LinkedList<T>::Clear()
 	{
 		if (m_count == 0) return;
 		auto *p_curr = mp_head;
 		LinkedListNode<T>* p_next = nullptr;
 		while (p_curr)
 		{
-			p_next = p_curr->get_next();
+			p_next = p_curr->GetNext();
 			delete p_curr;
 			p_curr = p_next;
 		}
@@ -222,22 +222,22 @@ namespace my_lib {
 
 	//returns true or false indicating list is empty or not
 	template<class T>
-	bool LinkedList<T>::is_empty() const
+	bool LinkedList<T>::IsEmpty() const
 	{
 		return m_count == 0;
 	}
 
 	//reverse items
 	template<class T>
-	void LinkedList<T>::reverse()
+	void LinkedList<T>::Reverse()
 	{
 		LinkedListNode<T> *p_prev = nullptr;
 		LinkedListNode<T> *p_curr = mp_head;
 		LinkedListNode<T> *p_next = nullptr;
 		while (p_curr) {
-			p_next = p_curr->get_next();
-			p_curr->set_next(p_prev);
-			p_curr->set_prev(p_next);
+			p_next = p_curr->GetNext();
+			p_curr->SetNext(p_prev);
+			p_curr->SetPrev(p_next);
 			p_prev = p_curr;
 			p_curr = p_next;
 		}

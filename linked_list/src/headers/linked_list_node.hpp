@@ -15,12 +15,18 @@ namespace my_lib{
 		LinkedListNode(const LinkedListNode &) = delete;
 		LinkedListNode &operator=(const LinkedListNode &) = default;
 
-		const T get_data() const { return m_data; }
-		LinkedListNode<T> *get_next() const { return mp_next; }
-		LinkedListNode<T> *get_prev() const { return mp_prev; }
-		void set_data(const T &t_data) { m_data = t_data; }
-		void set_next(LinkedListNode<T> *tp_next) { mp_next = tp_next; }
-		void set_prev(LinkedListNode<T> *tp_prev) { mp_prev = tp_prev; }
+		//get data
+		const T GetData() const { return m_data; }
+		//get next element
+		LinkedListNode<T> *GetNext() const { return mp_next; }
+		//get prev element
+		LinkedListNode<T> *GetPrev() const { return mp_prev; }
+		//set data
+		void SetData(const T &t_data) { m_data = t_data; }
+		//set next element
+		void SetNext(LinkedListNode<T> *tp_next) { mp_next = tp_next; }
+		//set prev element
+		void SetPrev(LinkedListNode<T> *tp_prev) { mp_prev = tp_prev; }
 
 	private:
 		T m_data;

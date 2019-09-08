@@ -18,39 +18,39 @@ namespace my_lib {
 		~LinkedList();
 
 		//returns no of items in list
-		size_t count() const;
+		size_t Count() const;
 		//add item at the tail of the list
-		void push_back(const T &t_data);
+		void PushBack(const T &t_data);
 		//remove item from the tail of the list
-		T pop_back();
+		T PopBack();
 		//returns value of the last item
-		T peek_back() const;
+		T PeekBack() const;
 		//adds item at the end of the list
-		void add_last(const T &t_data);
+		void AddLast(const T &t_data);
 		//removes item from the end of the list
-		T remove_last();
+		T RemoveLast();
 		//add item at the head of the list
-		void push_front(const T &t_data);
+		void PushFront(const T &t_data);
 		//remove item from the head
-		T pop_front();
+		T PopFront();
 		//returns value of the first element
-		T LinkedList<T>::peek_first() const;
+		T LinkedList<T>::PeekFront() const;
 		//add item at the head of the list
-		void add_first(const T& t_data);
+		void AddFirst(const T& t_data);
 		//remove item first item of the list
-		T remove_first();
-			//inserts item at given index
-		void insert_at(int t_index, const T &t_data);
+		T RemoveFirst();
+		//inserts item at given index
+		void InsertAt(int t_index, const T &t_data);
 		//removes item at given index
-		T remove_at(int t_index);
+		T RemoveAt(int t_index);
 		//gives value of the item at given index
 		T operator[](int t_index) const;
 		//clears all the item from the list
-		void clear();
+		void Clear();
 		//returns true or false indicating list is empty or not
-		bool is_empty() const;
+		bool IsEmpty() const;
 		//reverse items in the list
-		void reverse();
+		void Reverse();
 
 	private:
 		LinkedListNode<T> *mp_head;

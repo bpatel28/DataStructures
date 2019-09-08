@@ -9,7 +9,7 @@ namespace my_lib_test {
 
 	TEST_F(SizeTest, SizeEmpty) {
 		my_lib::LinkedList<int> list{};
-		size_t size = list.count();
+		size_t size = list.Count();
 
 		EXPECT_EQ(size, 0);
 	}
