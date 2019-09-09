@@ -22,7 +22,7 @@ namespace  {
 		my_lib::LinkedList<int>* mp_int_list;
  	};
 
-	TEST_F(LinkedListTest, CountShouldGivesItemCounts)
+	TEST_F(LinkedListTest, CountShouldGiveItemCounts)
 	{
 		EXPECT_EQ(mp_int_list->Count(), 0);
 
