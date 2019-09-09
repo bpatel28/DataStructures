@@ -54,6 +54,7 @@ namespace my_lib {
 		if (!mp_tail) throw std::runtime_error("Empty List.");
 		auto p_data = mp_tail->GetData();
 		auto p_prev = mp_tail->GetPrev();
+		if (p_prev) p_prev->SetNext(nullptr);
 		delete mp_tail;
 		mp_tail = p_prev;
 		if (m_count == 1) mp_head = p_prev;
@@ -109,6 +110,7 @@ namespace my_lib {
 		if (!mp_head) throw std::runtime_error("Empty List.");
 		auto data = mp_head->GetData();
 		auto* p_next = mp_head->GetNext();
+		if (p_next) p_next->SetPrev(nullptr);
 		delete mp_head;
 		mp_head = p_next;
 		if (m_count == 1) mp_tail = p_next;
@@ -171,18 +173,20 @@ namespace my_lib {
 	template<class T>
 	T LinkedList<T>::RemoveAt(int t_index)
 	{
-		if (t_index < 0 || t_index > m_count) throw std::runtime_error("Index Out of Range.");
-		if (t_index == m_count) return PopBack();
-		if (t_index == 0) return RemoveFirst();
+		if (t_index < 0 || t_index >= m_count) throw std::runtime_error("Index Out of Range.");
+		if (t_index == m_count - 1) return PopBack();
+		if (t_index == 0) return PopFront();
 		LinkedListNode<T>* p_curr = mp_head;
-		for (size_t i = 1; i != t_index; i++)
+		for (size_t i = 1; i <= t_index; i++)
 		{
 			p_curr = p_curr->GetNext();
 		}
-		auto *p_data = p_curr;
-		auto data = p_data->GetData();
-		p_curr->SetPrev(p_curr->GetNext());
-		delete p_data;
+		auto data = p_curr->GetData();
+		auto *p_prev = p_curr->GetPrev();
+		auto *p_next = p_curr->GetNext();
+		if (p_prev) p_prev->SetNext(p_next);
+		if (p_next) p_next->SetPrev(p_prev);
+		delete p_curr;
 		m_count--;
 		return data;
 	}
@@ -194,7 +198,7 @@ namespace my_lib {
 		if (t_index < 0 || t_index >= m_count) throw std::runtime_error("Index Out of Range.");
 		if (t_index == m_count - 1) return PeekBack();
 		if (t_index == 0) return PeekFront();
-		LinkedListNode<T>* p_curr = mp_head;
+		LinkedListNode<T>* p_curr = mp_head->GetNext();
 		for (size_t i = 1; i != t_index; i++)
 		{
 			p_curr = p_curr->GetNext();
