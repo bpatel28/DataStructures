@@ -1,7 +1,7 @@
 ﻿// linked_list.cpp : Defines the functions for linked_list class.
 //
 
-#include "headers/linked_list.hpp"
+#include "linked_list.hpp"
 
 namespace my_lib {
 

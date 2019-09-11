@@ -1,8 +1,7 @@
 // main.cpp : Defines the entry point for the application.
 //
 
-#include "src/headers/linked_list.hpp"
-#include "src/linked_list.cpp"
+#include "linked_list.cpp"
 
 int main()
 {

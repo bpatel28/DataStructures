@@ -1,8 +1,8 @@
 #include "gtest/gtest.h"
 
-#include "../src/headers/linked_list_node.hpp"
-#include "../src/headers/linked_list.hpp"
-#include "../src/linked_list.cpp"
+#include "linked_list_node.hpp"
+#include "linked_list.hpp"
+#include "linked_list.cpp"
 #include <stdlib.h>
 #include <iostream>
 
