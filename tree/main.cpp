@@ -1,8 +1,9 @@
 
-#include "tree.hpp"
+#include "bt_node.hpp"
 
 int main()
 {
-	std::cout << "Hello CMake." << std::endl;
+	my_lib::BTNode<int> node;
+	std::cout << node.GetData() << std::endl;
 	return 0;
 }
