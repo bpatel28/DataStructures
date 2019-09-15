@@ -33,6 +33,6 @@ add_executable(trees_test ${SOURCE_TEST})
 
 target_link_libraries(trees_test gtest_main)
 
-target_link_libraries(trees_test linked_list_lib)
+target_link_libraries(trees_test trees_lib)
 
 add_test(NAME trees_test COMMAND trees_test)

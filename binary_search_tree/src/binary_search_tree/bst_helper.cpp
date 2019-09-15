@@ -1,6 +1,8 @@
 //bst_node.cpp : function defined to help easy operations with binary search tree.
 //
 
+#include "binary_search_tree.hpp"
+
 namespace my_lib
 {
 	//convert sorted array to balanced binary search tree.
