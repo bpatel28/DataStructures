@@ -12,7 +12,7 @@ namespace
 	protected:
 		void SetUp() override
 		{
-			mp_tree = new my_lib::BinarySearchTree<int>{};
+			mp_tree = new my_lib::BinarySearchTree<int, int>{};
 		}
 
 		void TearDown() override
@@ -20,7 +20,7 @@ namespace
 			delete mp_tree;
 		}
 
-		my_lib::BinarySearchTree<int> *mp_tree;
+		my_lib::BinarySearchTree<int, int> *mp_tree;
 	};
 
 

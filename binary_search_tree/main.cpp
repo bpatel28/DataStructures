@@ -4,14 +4,15 @@
 
 int main()
 {
-	std::vector<int> data { 1 , 2, 3, 4, 5, 6, 7, 8, 9, 10};
-	my_lib::BinarySearchTree<int> tree {};
-	my_lib::BuildBalancedBST(tree, data, 0, 9);
+	std::vector<int> data { 11 , 12, 13, 14, 15, 16, 17, 18, 19, 20};
+	std::vector<int> key {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+	my_lib::BinarySearchTree<int, int> tree {};
+	my_lib::BuildBalancedBST(tree, data, key, 0, 9);
 
 	try
 	{
-		tree.Insert(19);
-		tree.Insert(21);
+		tree.Insert(19, 9);
+		tree.Insert(21, 11);
 		tree.BalanceTree();
 		my_lib::TraverseInOrder(tree);
 	}
