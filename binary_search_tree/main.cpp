@@ -10,7 +10,6 @@ int main()
 
 	try
 	{
-		tree.Insert(7);
 		tree.Insert(19);
 		tree.Insert(21);
 		tree.BalanceTree();
@@ -20,6 +19,6 @@ int main()
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	
+
 	return 0;
 }

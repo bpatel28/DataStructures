@@ -1,7 +1,5 @@
 #include "gtest/gtest.h"
 
-#include "linked_list_node.hpp"
-#include "linked_list.hpp"
 #include "linked_list.cpp"
 #include <stdlib.h>
 #include <iostream>
