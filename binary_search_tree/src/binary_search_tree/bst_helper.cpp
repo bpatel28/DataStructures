@@ -1,5 +1,6 @@
 //bst_node.cpp : function defined to help easy operations with binary search tree.
-//
+//T - datatype, K - keytype
+//requires comparison implemented in keytype
 
 #include "binary_search_tree.hpp"
 
@@ -21,7 +22,7 @@ namespace my_lib
 	template<class T, class K>
 	void TraverseInOrder(BinarySearchTree<T, K> &t_tree)
 	{
-		TraverseInOrder(t_tree.GetRoot());
+		TraverseInOrder(*t_tree.GetRoot());
 	}
 
 	//traverse node recursively
@@ -30,7 +31,7 @@ namespace my_lib
 	{
 		if (!&t_node) return;
 		TraverseInOrder(*t_node.GetLeftChild());
-		std::cout << t_node.GetData() << std::endl;
+		std::cout << t_node.GetKey() << " -> " << t_node.GetData() << std::endl;
 		TraverseInOrder(*t_node.GetRightChild());
 	}
 

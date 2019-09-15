@@ -14,6 +14,8 @@ int main()
 		tree.Insert(19, 9);
 		tree.Insert(21, 11);
 		tree.BalanceTree();
+		std::cout << tree.Contains(12) << std::endl;
+		std::cout << std::endl;
 		my_lib::TraverseInOrder(tree);
 	}
 	catch (const std::exception& e)

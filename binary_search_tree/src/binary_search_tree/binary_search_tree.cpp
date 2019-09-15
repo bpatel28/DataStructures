@@ -1,5 +1,8 @@
 //binary_tree.cpp : defines operations for binary_tree
-//
+//T - datatype, K - keytype
+//requires comparison implemented in keytype
+
+
 #include "binary_search_tree.hpp"
 #include "bst_helper.cpp"
 
@@ -15,7 +18,7 @@ namespace my_lib
 	BinarySearchTree<T, K>::~BinarySearchTree() { RemoveBranch(mp_root); }
 
 	template<class T, class K>
-	BSTNode<T, K> BinarySearchTree<T, K>::GetRoot() const { return *mp_root; }
+	BSTNode<T, K>* BinarySearchTree<T, K>::GetRoot() const { return mp_root; }
 
 	template<class T, class K>
 	void BinarySearchTree<T, K>::RemoveBranch(BSTNode<T, K> *tp_node)
@@ -55,19 +58,34 @@ namespace my_lib
 	}
 
 	template<class T, class K>
-	bool BinarySearchTree<T, K>::Contains(const K t_key) const
+	T BinarySearchTree<T, K>::Find(const K t_key) const
 	{
-		return Contains(t_key, mp_root);
+		return Find(t_key, mp_root);
 	}
 
 	template<class T, class K>
-	bool BinarySearchTree<T, K>::Contains(const K t_key, const BSTNode<T, K> *tp_node) const
+	bool BinarySearchTree<T, K>::Contains(const T t_data) const
+	{
+		return Contains(t_data, mp_root);
+	}
+
+	template<class T, class K>
+	T BinarySearchTree<T, K>::Find(const K t_key, const BSTNode<T, K> *tp_node) const
+	{
+		if (!tp_node) throw std::runtime_error("No element found!");
+		else if (tp_node->GetKey() == t_key) return tp_node->GetData();
+		else if (tp_node->GetKey() > t_key) return Find(t_key, tp_node->GetLeftChild());
+		else  Find(t_key, tp_node->GetRightChild());
+	}
+
+	template<class T, class K>
+	bool BinarySearchTree<T, K>::Contains(const T t_data, const BSTNode<T, K>* tp_node) const
 	{
 		if (!tp_node) return false;
-		if (tp_node->GetKey() == t_key) return true;
-		else if (tp_node->GetKey() > t_key) return Contains(t_data, tp_node->GetLeftChild());
-		else if (tp_node->GetKey() < t_key) return Contains(t_data, tp_node->GetRightChild());
-		return false;
+		if (tp_node->GetData() == t_data) return true;
+		if (Contains(t_data, tp_node->GetLeftChild()) == false)
+			return Contains(t_data, tp_node->GetRightChild());
+		return true;
 	}
 
 	template<class T, class K>

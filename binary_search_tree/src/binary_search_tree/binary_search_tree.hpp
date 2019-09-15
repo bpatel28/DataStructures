@@ -1,7 +1,6 @@
 //binary_tree.hpp : defines binary tree
-//
-//template parameter requires operator overload for comparison.
-//
+//T - datatype, K - keytype
+//requires comparison implemented in keytype
 
 #ifndef BINARY_SEARCH_TREE
 #define BINARY_SEARCH_TREE
@@ -23,11 +22,13 @@ namespace my_lib
 		~BinarySearchTree();
 
 		//get the root node
-		BSTNode<T, K> GetRoot() const;
+		BSTNode<T, K>* GetRoot() const;
 		//Insert an element
 		void Insert(const T t_data, const K t_key);
+		//search element by key
+		T Find(const K t_key) const;
 		//search element by data
-		bool Contains(const K t_key) const;
+		bool Contains(const T t_data) const;
 		//Get Min value element
 		T GetMin() const;
 		//Get Max value element
@@ -46,8 +47,10 @@ namespace my_lib
 		void RemoveBranch(BSTNode<T, K> *tp_node);
 		//Insert element recursively
 		void Insert(BSTNode<T, K> *tp_data, BSTNode<T, K> *tp_curr_node, BSTNode<T, K> *tp_parent_node);
-		//search recursively elemenet
-		bool Contains(const K t_key, const BSTNode<T, K> *tp_node) const;
+		//search recursively elemenet by key
+		T Find(const K t_key, const BSTNode<T, K> *tp_node) const;
+		//search recursively elemenet by data
+		bool Contains(const T t_data, const BSTNode<T, K>* tp_node) const;
 		//find height recursively
 		size_t GetHeight(const BSTNode<T, K> *tp_node) const;
 		//Get Min Value Node
