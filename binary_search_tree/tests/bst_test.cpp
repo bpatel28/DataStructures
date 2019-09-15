@@ -9,10 +9,6 @@
 
 namespace
 {
-	std::vector<std::string> STRING_LIST {"Brijesh", "Hai", "Anderson", "Pablo", "Khush", "Sandeep"};
-	std::vector<int> INT_LIST { 11, 25, 13, 17, 23, 18, 29, 10, 8, 6, 1, 3, 5, 100, 29 };
-	std::vector<char> CHAR_LIST{ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k' };
-
 	class BSTTest : public ::testing::Test
 	{
 	protected:
