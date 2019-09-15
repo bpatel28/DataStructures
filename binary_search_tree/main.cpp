@@ -4,17 +4,17 @@
 
 int main()
 {
-	my_lib::BinarySearchTree<int> tree{};
+	std::vector<int> data { 1 , 2, 3, 4, 5, 6, 7, 8, 9, 10};
+	my_lib::BinarySearchTree<int> tree {};
+	my_lib::BuildBalancedBST(tree, data, 0, 9);
+
 	try
 	{
 		tree.Insert(7);
-		tree.Insert(5);
-		tree.Insert(2);
-		tree.Insert(10);
-		tree.Insert(45);
-		tree.Remove(7);
-
-		std::cout << tree.GetMax() << std::endl;
+		tree.Insert(19);
+		tree.Insert(21);
+		tree.BalanceTree();
+		my_lib::TraverseInOrder(tree);
 	}
 	catch (const std::exception& e)
 	{

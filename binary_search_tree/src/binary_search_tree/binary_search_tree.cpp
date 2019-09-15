@@ -1,7 +1,7 @@
 //binary_tree.cpp : defines operations for binary_tree
 //
-
 #include "binary_search_tree.hpp"
+#include "bst_helper.cpp"
 
 namespace my_lib
 {
@@ -24,6 +24,7 @@ namespace my_lib
 		RemoveBranch(tp_node->GetLeftChild());
 		RemoveBranch(tp_node->GetRightChild());
 		delete tp_node;
+		mp_root = nullptr;
 	}
 
 	template<class T>
@@ -183,5 +184,14 @@ namespace my_lib
 			else tp_parent_node->SetLeftChild(p_left_child);
 		}
 		delete tp_del_node;
+	}
+
+	template<class T>
+	void BinarySearchTree<T>::BalanceTree()
+	{
+		std::vector<T> list;
+		ToList(list, *mp_root);
+		RemoveBranch(mp_root);
+		BuildBalancedBST(*this, list, 0, list.size() - 1);
 	}
 }

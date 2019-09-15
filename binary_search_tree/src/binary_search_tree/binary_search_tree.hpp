@@ -6,6 +6,10 @@
 #ifndef BINARY_SEARCH_TREE
 #define BINARY_SEARCH_TREE
 
+#include <stdlib.h>
+#include "iostream"
+#include <vector>
+
 #include "bst_node.hpp"
 
 namespace my_lib
@@ -32,6 +36,8 @@ namespace my_lib
 		size_t GetHeight() const;
 		//Remove an element
 		void Remove(const T t_data);
+		//Make Balanced Tree
+		void BalanceTree();
 
 	private:
 		BSTNode<T> *mp_root;

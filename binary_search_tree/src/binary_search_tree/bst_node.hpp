@@ -4,9 +4,6 @@
 #ifndef  BINARY_SEARCH_TREE_NODE
 #define  BINARY_SEARCH_TREE_NODE
 
-#include <stdlib.h>
-#include "iostream"
-
 namespace my_lib
 {
 	template <class T>
