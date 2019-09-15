@@ -64,28 +64,50 @@ namespace my_lib
 	}
 
 	template<class T, class K>
+	T BinarySearchTree<T, K>::Find(const K t_key, const BSTNode<T, K> *tp_node) const
+	{
+		if (!tp_node) throw std::runtime_error("No element found!");
+		else if (tp_node->GetKey() == t_key) return tp_node->GetData();
+		else if (tp_node->GetKey() > t_key) return Find(t_key, tp_node->GetLeftChild());
+		else return Find(t_key, tp_node->GetRightChild());
+		throw std::runtime_error("No element found!");
+	}
+
+	template<class T, class K>
 	bool BinarySearchTree<T, K>::Contains(const T t_data) const
 	{
 		return Contains(t_data, mp_root);
 	}
 
 	template<class T, class K>
-	T BinarySearchTree<T, K>::Find(const K t_key, const BSTNode<T, K> *tp_node) const
-	{
-		if (!tp_node) throw std::runtime_error("No element found!");
-		else if (tp_node->GetKey() == t_key) return tp_node->GetData();
-		else if (tp_node->GetKey() > t_key) return Find(t_key, tp_node->GetLeftChild());
-		else  Find(t_key, tp_node->GetRightChild());
-	}
-
-	template<class T, class K>
 	bool BinarySearchTree<T, K>::Contains(const T t_data, const BSTNode<T, K>* tp_node) const
 	{
 		if (!tp_node) return false;
-		if (tp_node->GetData() == t_data) return true;
-		if (Contains(t_data, tp_node->GetLeftChild()) == false)
+		else if (tp_node->GetData() == t_data) return true;
+		else if (Contains(t_data, tp_node->GetLeftChild()) == false)
 			return Contains(t_data, tp_node->GetRightChild());
 		return true;
+	}
+
+	template<class T, class K>
+	K BinarySearchTree<T, K>::GetKey(const T t_data) const
+	{
+		K key;
+		GetKey(key, t_data, mp_root);
+		return key;
+	}
+
+	template<class T, class K>
+	void BinarySearchTree<T, K>::GetKey(K &t_key, const T t_data, const BSTNode<T, K> *tp_node) const
+	{
+		if (!tp_node) return;
+		if (tp_node->GetData() == t_data)
+		{
+			t_key = tp_node->GetKey();
+			return;
+		}
+		GetKey(t_key, t_data, tp_node->GetLeftChild());
+		GetKey(t_key, t_data, tp_node->GetRightChild());
 	}
 
 	template<class T, class K>
@@ -99,8 +121,8 @@ namespace my_lib
 	template<class T, class K>
 	BSTNode<T, K>* BinarySearchTree<T, K>::GetMin(BSTNode<T, K> *tp_node) const
 	{
-		BSTNode<T>* p_curr = tp_node;
-		BSTNode<T>* p_prev = nullptr;
+		BSTNode<T, K>* p_curr = tp_node;
+		BSTNode<T, K>* p_prev = nullptr;
 		while (p_curr)
 		{
 			p_prev = p_curr;
@@ -120,8 +142,8 @@ namespace my_lib
 	template<class T, class K>
 	BSTNode<T, K>* BinarySearchTree<T, K>::GetMax(BSTNode<T, K>* tp_node) const
 	{
-		BSTNode<T>* p_curr = tp_node;
-		BSTNode<T>* p_prev = nullptr;
+		BSTNode<T, K>* p_curr = tp_node;
+		BSTNode<T, K>* p_prev = nullptr;
 		while (p_curr)
 		{
 			p_prev = p_curr;
@@ -192,7 +214,6 @@ namespace my_lib
 			auto *p_min = GetMin(p_right_child);
 			if (p_min) p_min->SetLeftChild(p_left_child);
 			else if (p_right_child) p_right_child->SetLeftChild(p_left_child);
-			else tp_parent_node->SetLeftChild(p_left_child);
 		}
 		else if (tp_parent_node->GetKey() < tp_del_node->GetKey())
 		{
@@ -200,7 +221,6 @@ namespace my_lib
 			auto *p_min = GetMin(p_right_child);
 			if (p_min) p_min->SetLeftChild(p_left_child);
 			else if (p_right_child) p_right_child->SetLeftChild(p_left_child);
-			else tp_parent_node->SetLeftChild(p_left_child);
 		}
 		delete tp_del_node;
 	}

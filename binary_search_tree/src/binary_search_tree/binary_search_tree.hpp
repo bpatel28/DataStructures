@@ -29,9 +29,11 @@ namespace my_lib
 		T Find(const K t_key) const;
 		//search element by data
 		bool Contains(const T t_data) const;
-		//Get Min value element
+		//Get Key of the data
+		K GetKey(const T t_data) const;
+		//Get Min key element
 		T GetMin() const;
-		//Get Max value element
+		//Get Max key element
 		T GetMax() const;
 		//Get Height of the tree
 		size_t GetHeight() const;
@@ -50,7 +52,9 @@ namespace my_lib
 		//search recursively elemenet by key
 		T Find(const K t_key, const BSTNode<T, K> *tp_node) const;
 		//search recursively elemenet by data
-		bool Contains(const T t_data, const BSTNode<T, K>* tp_node) const;
+		bool Contains(const T t_data, const BSTNode<T, K> *tp_node) const;
+		//find key recursively
+		void GetKey(K &t_key, const T t_data, const BSTNode<T, K>* tp_node) const;
 		//find height recursively
 		size_t GetHeight(const BSTNode<T, K> *tp_node) const;
 		//Get Min Value Node
