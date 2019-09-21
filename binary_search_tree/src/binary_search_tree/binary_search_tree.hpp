@@ -41,6 +41,8 @@ namespace my_lib
 		void Remove(const K t_key);
 		//Make Balanced Tree
 		void BalanceTree();
+		//check if tree is balanced or not.
+		bool IsBalanced() const;
 
 	private:
 		BSTNode<T, K> *mp_root;
@@ -49,8 +51,6 @@ namespace my_lib
 		void RemoveBranch(BSTNode<T, K> *tp_node);
 		//Insert element recursively
 		void Insert(BSTNode<T, K> *tp_data, BSTNode<T, K> *tp_curr_node, BSTNode<T, K> *tp_parent_node);
-		//search recursively elemenet by key
-		T Find(const K t_key, const BSTNode<T, K> *tp_node) const;
 		//search recursively elemenet by data
 		bool Contains(const T t_data, const BSTNode<T, K> *tp_node) const;
 		//find key recursively
@@ -65,6 +65,8 @@ namespace my_lib
 		void Remove(K t_key, BSTNode<T, K> *tp_node, BSTNode<T, K> *tp_parent_node);
 		//delete node and rearrange subtrees
 		void Delete(BSTNode<T, K> *tp_del_node, BSTNode<T, K> *tp_parent_node);
+		//check if tree is balanced or not.
+		bool IsBalanced(BSTNode<T, K> *tp_node) const;
 	};
 }
 

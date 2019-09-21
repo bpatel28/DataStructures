@@ -13,7 +13,9 @@ int main()
 	{
 		tree.Insert(19, 0);
 		tree.Insert(21, 11);
+		std::cout << "Is Balanced : " << tree.IsBalanced() << std::endl;
 		tree.BalanceTree();
+		std::cout << "Is Balanced : " << tree.IsBalanced() << std::endl;
 		my_lib::TraverseInOrder(tree);
 		tree.Remove(0);
 		std::cout << std::endl << tree.GetRoot()->GetData() << std::endl << std::endl;

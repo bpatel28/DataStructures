@@ -60,17 +60,17 @@ namespace my_lib
 	template<class T, class K>
 	T BinarySearchTree<T, K>::Find(const K t_key) const
 	{
-		return Find(t_key, mp_root);
-	}
-
-	template<class T, class K>
-	T BinarySearchTree<T, K>::Find(const K t_key, const BSTNode<T, K> *tp_node) const
-	{
-		if (!tp_node) throw std::runtime_error("No element found!");
-		else if (tp_node->GetKey() == t_key) return tp_node->GetData();
-		else if (tp_node->GetKey() > t_key) return Find(t_key, tp_node->GetLeftChild());
-		else return Find(t_key, tp_node->GetRightChild());
-		throw std::runtime_error("No element found!");
+		auto *p_curr = mp_root;
+		while (p_curr)
+		{
+			if (p_curr->GetKey() == t_key)
+				return p_curr->GetData();
+			else if (p_curr->GetKey() > t_key)
+				p_curr = p_curr->GetLeftChild();
+			else if (p_curr->GetKey() < t_key)
+				p_curr = p_curr->GetRightChild();
+		}
+		throw std::runtime_error("No Element Found!");
 	}
 
 	template<class T, class K>
@@ -230,8 +230,22 @@ namespace my_lib
 	{
 		std::vector<T> data;
 		std::vector<K> keys;
-		ToList(data, keys,*mp_root);
+		ToList(data, keys, *mp_root);
 		RemoveBranch(mp_root);
 		BuildBalancedBST(*this, data, keys, 0, data.size() - 1);
+	}
+
+	template<class T, class K>
+	bool BinarySearchTree<T, K>::IsBalanced() const
+	{
+		return IsBalanced(mp_root);
+	}
+
+	template<class T, class K>
+	bool BinarySearchTree<T, K>::IsBalanced(BSTNode<T, K> *tp_node) const
+	{
+		if (!tp_node) return true;
+		int height_diff = GetHeight(tp_node->GetLeftChild()) - GetHeight(tp_node->GetRightChild());
+		return abs(height_diff) < 1;
 	}
 }

@@ -227,6 +227,37 @@ namespace
 			EXPECT_EQ(mp_sc_tree->Find('A' + i), ("A" + std::to_string(i)));
 		}
 	}
+
+	TEST_F(BSTTest, BalanceTreeShouldMakeTreeBalanced)
+	{
+		//add elements
+		for (size_t i = 0; i < 20; i++)
+		{
+			mp_ii_tree->Insert(i, i);
+		}
+		for (size_t i = 0; i < 20; i++)
+		{
+			mp_si_tree->Insert(("A" + std::to_string(i)), i);
+		}
+		for (size_t i = 0; i < 20; i++)
+		{
+			mp_sc_tree->Insert(("A" + std::to_string(i)), 'A' + i);
+		}
+
+		//teest
+		EXPECT_EQ(mp_ii_tree->IsBalanced(), false);
+		EXPECT_EQ(mp_sc_tree->IsBalanced(), false);
+		EXPECT_EQ(mp_si_tree->IsBalanced(), false);
+
+		mp_ii_tree->BalanceTree();
+		mp_sc_tree->BalanceTree();
+		mp_si_tree->BalanceTree();
+
+		//teest
+		EXPECT_EQ(mp_ii_tree->IsBalanced(), true);
+		EXPECT_EQ(mp_sc_tree->IsBalanced(), true);
+		EXPECT_EQ(mp_si_tree->IsBalanced(), true);
+	}
 }
 
 
