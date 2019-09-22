@@ -1,4 +1,4 @@
-//b_node.hpp : defines defination for binary tree node.
+//b_node.hpp : defination for binary tree node.
 //T - datatype, K - keytype
 //requires comparison implemented in keytype
 
@@ -45,4 +45,4 @@ namespace my_lib
 	};
 }
 
-#endif // ! BINARY_Tree_Node
+#endif // ! BINARY_TREE_NODE
