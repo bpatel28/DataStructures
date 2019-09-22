@@ -36,7 +36,7 @@ namespace my_lib
 		size_t m_size;
 
 		//check size and increase the size of heap if needed
-		void CheckSize(size_t t_index);
+		void CheckSize(size_t t_index = 0);
 		//heapify elements to restore heap property - bottom up
 		void ShiftUp(size_t t_index);
 		//Heapify elemeent to restore heap - top down

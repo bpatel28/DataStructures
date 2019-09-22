@@ -1,4 +1,4 @@
-//max_heap.cpp : defination for max heap operations.
+//max_heap.cpp : max heap operations.
 //T - datatype, K - keytype
 //requires comparison implemented in keytype.
 
@@ -35,12 +35,12 @@ namespace my_lib
 	}
 
 	template<class T, class K>
-	void MaxHeap<T, K>::CheckSize(size_t t_index)
+	void MaxHeap<T, K>::CheckSize(size_t t_index = 0)
 	{
 		assert(t_index < SIZE_MAX);
 		if (t_index > m_size)
 		{
-			m_size += t_index; //new capacity of heap
+			m_size += m_size; //new capacity of heap
 			HElement<T, K> *p_temp_arr = new HElement<T, K>[m_size];
 			for (size_t i = 0; i < m_count; i++)
 			{
@@ -48,6 +48,21 @@ namespace my_lib
 			}
 			delete[] mp_elements;
 			mp_elements = p_temp_arr;
+		}
+		else if (t_index == 0)
+		{
+			//if more than twice m_count left empty than remove extra space
+			if (m_size - m_count > 2 * m_count)
+			{
+				m_size = m_size - m_count;
+				HElement<T, K>* p_temp_arr = new HElement<T, K>[m_size];
+				for (size_t i = 0; i < m_count; i++)
+				{
+					p_temp_arr[i] = mp_elements[i];
+				}
+				delete[] mp_elements;
+				mp_elements = p_temp_arr;
+			}
 		}
 	}
 
@@ -85,19 +100,16 @@ namespace my_lib
 	template<class T, class K>
 	T MaxHeap<T, K>::ExtractMax()
 	{
-		T data = GetMax();
-		if (m_count == 1)
-		{
-			m_count--;
-		}
-		else if (m_count > 1)
-		{
-			m_count--;
-			mp_elements[0].SetData(mp_elements[m_count].GetData());
-			mp_elements[0].SetKey(mp_elements[m_count].GetKey());
-			ShiftDown(0);
-		}
-		return data;
+		assert(m_count > 0);
+
+		T max = mp_elements[0].GetData();
+
+		Swap(0, m_count - 1);
+		m_count--;
+		ShiftDown(0);
+
+		CheckSize();
+		return max;
 	}
 
 	template<class T, class K>
@@ -148,10 +160,10 @@ namespace my_lib
 			}
 		}
 		if (remove_index < 0) return;
+		Swap(remove_index, m_count - 1);
 		m_count--;
-		mp_elements[remove_index].SetData(mp_elements[m_count].GetData());
-		mp_elements[remove_index].SetKey(mp_elements[m_count].GetKey());
 		ShiftDown(remove_index);
+		CheckSize();
 	}
 }
 

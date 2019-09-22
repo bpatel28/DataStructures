@@ -16,7 +16,6 @@ int main()
 	}
 	std::cout << std::endl;
 
-	heap.Remove(10);
 	size_t size = heap.Count();
 	for (size_t i = 0; i < size; i++)
 	{
