@@ -3,6 +3,8 @@
 #ifndef TRIES
 #define TRIES
 
+#include "trie_node.hpp"
+
 namespace my_lib
 {
 

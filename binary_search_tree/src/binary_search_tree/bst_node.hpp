@@ -15,7 +15,7 @@ namespace my_lib
 		BSTNode(T t_data, K t_key) : m_key(t_key), m_data(t_data), mp_left_child(nullptr), mp_right_child(nullptr) {}
 		BSTNode(K t_key) : m_key(t_key), m_data(0), mp_left_child(nullptr), mp_right_child(nullptr) {}
 		~BSTNode() {}
-
+ 
 		//returns data
 		T GetData() const { return m_data; }
 		//set data
