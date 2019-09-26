@@ -1,21 +1,23 @@
 // main.cpp : Defines the entry point for the application.
 //
 
-#include <stdlib.h>
-#include <iostream>
-
 #include "tries.cpp"
 
 int main()
 {
-	my_lib::TrieNode<int> node{};
-	int i = 19;
-	node.SetData(i);
-	i = 18;
-	if (!node.GetChild(0))
+	try
 	{
-		std::cout << node.GetData() << std::endl;
+		my_lib::Trie<int> trie{};
+		trie.Insert("aa", 1);
+		trie.Insert("ZZ", 10);
+		trie.Insert("bb", 1);
+		trie.Remove("ZZ");
+		std::cout << trie.GetValue("ZZ") << std::endl;
+		std::cout << trie.GetValue("brijesh") << std::endl;
 	}
-	
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what();
+	}
 	return 0;
 }
