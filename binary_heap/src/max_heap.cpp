@@ -55,7 +55,7 @@ namespace my_lib
 			if (m_size - m_count > 2 * m_count)
 			{
 				m_size = m_size - m_count;
-				HElement<T, K>* p_temp_arr = new HElement<T, K>[m_size];
+				HElement<T, K> *p_temp_arr = new HElement<T, K>[m_size];
 				for (size_t i = 0; i < m_count; i++)
 				{
 					p_temp_arr[i] = mp_elements[i];
