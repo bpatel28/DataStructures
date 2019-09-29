@@ -5,3 +5,4 @@
     - Heap
     - Tries
     - Quick Sort
+    - Merge Sort
