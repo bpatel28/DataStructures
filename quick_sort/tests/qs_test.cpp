@@ -9,6 +9,52 @@
 
 namespace
 {
+	struct Student
+	{
+		int Id = 0;
+		std::string Name{ "" };
+	};
+
+	const static int TOTAL_STUDENTS = 10;
+	const static int ID[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+	bool Compare(const Student& t_a, const Student& t_b)
+	{
+		return (t_a.Id < t_b.Id);
+	}
+
+	class SortTest : public ::testing::Test
+	{
+	protected :
+		
+		void SetUp() override
+		{
+			SetStudent(0, 9, "Brijesh");
+			SetStudent(1, 5, "Sandeep");
+			SetStudent(2, 1, "Pablo");
+			SetStudent(3, 3, "Hai");
+			SetStudent(4, 2, "Dave");
+			SetStudent(5, 4, "Khush");
+			SetStudent(6, 7, "Ray");
+			SetStudent(7, 8, "Kirk");
+			SetStudent(8, 0, "Vincent");
+			SetStudent(9, 6, "Aziz");
+		}
+
+		void TearDown() override
+		{
+
+		}
+
+		void SetStudent(int t_studentIndex, int t_idIndex, std::string t_name)
+		{
+			m_students[t_studentIndex].Id = ID[t_idIndex];
+			m_students[t_studentIndex].Name = t_name;
+		}
+
+		Student m_students[TOTAL_STUDENTS];
+	};
+
 	TEST(SimpleQuickSortTest, HandleIntegerSort)
 	{
 		int result[] {10000, 100, 99, 23, 19, 11, 0, 23, 44, 55, 24, 96, 105, 99999, 24};
@@ -45,6 +91,18 @@ namespace
 		for (int i = 0; i < 7; i++)
 		{
 			EXPECT_EQ(result[i], expected[i]);
+		}
+	}
+
+	TEST_F(SortTest, HandleObjectSort)
+	{
+
+
+		my_lib::QuickSort(m_students, TOTAL_STUDENTS, Compare);
+
+		for (int i = 0; i < TOTAL_STUDENTS; i++)
+		{
+			EXPECT_EQ(m_students[i].Id, ID[i]);
 		}
 	}
 }

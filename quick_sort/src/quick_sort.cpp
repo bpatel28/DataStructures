@@ -7,7 +7,6 @@ namespace my_lib
 {
 	namespace
 	{
-
 		template<class T>
 		void QuickSort(T t_arr[] , int t_left, int t_right)
 		{
