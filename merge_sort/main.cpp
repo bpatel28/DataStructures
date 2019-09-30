@@ -8,6 +8,15 @@
 
 int main()
 {
-	std::cout << "Project Merge Sort" << std::endl;
+	int arr[]{ 5, 3, 2, 4, 1 };
+
+	my_lib::MergeSort(arr, 5);
+
+	for (int i = 0; i < 5; i++)
+	{
+		std::cout << arr[i] << std::endl;
+	}
+
+
 	return 0;
 }

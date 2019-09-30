@@ -10,7 +10,17 @@
 
 namespace my_lib
 {
+	template<class T>
+	void MergeSort(T t_data[], int t_length);
 
+	namespace
+	{
+		template<class T>
+		void MergeSort(T t_data[], int t_startIndex, int t_endIndex);
+
+		template<class T>
+		void Merge(T t_data[], int t_left, int t_mid, int t_right);
+	}
 }
 
 
