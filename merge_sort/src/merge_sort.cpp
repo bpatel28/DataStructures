@@ -96,8 +96,8 @@ namespace my_lib
 			int leftArrSize = t_mid - t_left + 1;
 			int rightArrSize = t_right - t_mid;
 
-			T* leftArr = new T[leftArrSize];
-			T* rightArr = new T[rightArrSize];
+			T *leftArr = new T[leftArrSize];
+			T *rightArr = new T[rightArrSize];
 
 			for (int i = 0; i < leftArrSize; ++i)
 			{

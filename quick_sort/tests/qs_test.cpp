@@ -96,9 +96,7 @@ namespace
 
 	TEST_F(SortTest, HandleObjectSort)
 	{
-
-
-		my_lib::QuickSort(m_students, TOTAL_STUDENTS, Compare);
+		my_lib::QuickSort<Student>(m_students, TOTAL_STUDENTS, Compare);
 
 		for (int i = 0; i < TOTAL_STUDENTS; i++)
 		{
