@@ -7,3 +7,8 @@
 
 #include "array_list.cpp"
 #include "gtest/gtest.h"
+
+namespace
+{
+
+}
