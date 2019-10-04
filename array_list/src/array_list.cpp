@@ -118,7 +118,7 @@ namespace my_lib
 		size_t index = GetIndex(t_data);
 		if (index >= 0 && index < m_count)
 		{
-			for (size_t i = index; i < m_count - 1; i++)
+			for (size_t i = index; i < m_count - 1; ++i)
 			{
 				mp_data[i] = mp_data[i + 1];
 			}
@@ -144,7 +144,7 @@ namespace my_lib
 	template<class T>
 	size_t ArrayList<T>::GetIndex(T t_data) const
 	{
-		for (size_t i = 0; i < m_count; i++)
+		for (size_t i = 0; i < m_count; ++i)
 		{
 			if (t_data == mp_data[i])
 			{
@@ -157,7 +157,7 @@ namespace my_lib
 	template<class T>
 	bool ArrayList<T>::Contains(T t_data) const
 	{
-		for (size_t i = 0; i < m_count; i++)
+		for (size_t i = 0; i < m_count; ++i)
 		{
 			if (t_data == mp_data[i])
 			{
