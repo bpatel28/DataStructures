@@ -40,7 +40,7 @@ namespace my_lib
 		//access element by index
 		T operator[](size_t index) const;
 		//get index of data
-		int GetIndex(T t_data) const;
+		size_t GetIndex(T t_data) const;
 		//check if list contains item
 		bool Contains(T t_data) const;
 		

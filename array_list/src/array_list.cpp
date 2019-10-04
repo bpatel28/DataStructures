@@ -6,7 +6,10 @@
 namespace my_lib
 {
 	template<class T>
-	ArrayList<T>::ArrayList() : m_count(0), m_capacity(INITIAL_CAPACITY), mp_data(nullptr) {}
+	ArrayList<T>::ArrayList() : m_count(0), m_capacity(INITIAL_CAPACITY), mp_data(nullptr) 
+	{
+		mp_data = new T[m_capacity];
+	}
 
 	template<class T>
 	template<size_t N>
@@ -55,7 +58,6 @@ namespace my_lib
 			}
 
 			delete[] p_temp;
-			std::cout << m_count << " GROW " << m_capacity << std::endl;
 		}
 	}
 
@@ -105,7 +107,6 @@ namespace my_lib
 			{
 				mp_data[i] = p_temp[i];
 			}
-			std::cout << m_count << " shrink " << m_capacity << std::endl;
 			delete[] p_temp;
 		}
 	}
@@ -114,7 +115,7 @@ namespace my_lib
 	template<class T>
 	void ArrayList<T>::Remove(T t_data)
 	{
-		int index = GetIndex(t_data);
+		size_t index = GetIndex(t_data);
 		if (index >= 0 && index < m_count)
 		{
 			for (size_t i = index; i < m_count - 1; i++)
@@ -141,7 +142,7 @@ namespace my_lib
 
 
 	template<class T>
-	int ArrayList<T>::GetIndex(T t_data) const
+	size_t ArrayList<T>::GetIndex(T t_data) const
 	{
 		for (size_t i = 0; i < m_count; i++)
 		{
@@ -150,7 +151,7 @@ namespace my_lib
 				return i;
 			}
 		}
-		return -1;
+		throw std::runtime_error("No element found.");
 	}
 
 	template<class T>
