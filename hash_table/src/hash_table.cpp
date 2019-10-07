@@ -19,7 +19,7 @@ namespace my_lib
 	template<class K, class T, class F>
 	HashTable<K, T, F>::HashTable(size_t t_capacity) : m_count(0), m_capacity(t_capacity)
 	{
-		mp_table = new HashNode<K, T>* [m_capacity];
+		mp_table = new HashNode<K, T>*[m_capacity];
 
 		for (size_t i = 0; i < m_capacity; i++)
 		{
@@ -32,8 +32,8 @@ namespace my_lib
 	{
 		for (size_t i = 0; i < m_capacity; i++)
 		{
-			HashNode<K, T>* p_prev = nullptr;
-			HashNode<K, T>* p_entry = mp_table[i];
+			HashNode<K, T> *p_prev = nullptr;
+			HashNode<K, T> *p_entry = mp_table[i];
 
 			while (p_entry)
 			{
@@ -135,8 +135,8 @@ namespace my_lib
 	{
 		size_t hashCode = GetHashCode(hashFunc(t_key));
 
-		HashNode<K, T>* p_prev = nullptr;
-		HashNode<K, T>* p_entry = mp_table[hashCode];
+		HashNode<K, T> *p_prev = nullptr;
+		HashNode<K, T> *p_entry = mp_table[hashCode];
 
 		while (p_entry && p_entry->GetKey() != t_key)
 		{

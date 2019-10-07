@@ -10,7 +10,7 @@ int main()
 {
 	try
 	{
-		my_lib::HashTable<int, int> table{};
+		my_lib::HashTable<int, int, std::hash<int>> table{};
 
 		table.Put(1, 2);
 		table.Put(2, 3);

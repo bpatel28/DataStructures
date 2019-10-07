@@ -12,18 +12,9 @@ namespace my_lib
 	namespace
 	{
 		const size_t INITIAL_CAPACITY = 20;
-
-		template <typename K>
-		struct KeyHash {
-			unsigned long operator()(const K &t_key) const
-			{
-				return t_key % INITIAL_CAPACITY;
-			}
-		};
-
 	}
 
-	template<class K, class T, class F = KeyHash<K>>
+	template<class K, class T, class F>
 	class HashTable
 	{
 	public:
