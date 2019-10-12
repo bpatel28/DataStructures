@@ -11,10 +11,10 @@ namespace my_lib
 
 	namespace
 	{
-		const size_t INITIAL_CAPACITY = 20;
+		const size_t INITIAL_CAPACITY = 100;
 	}
 
-	template<class K, class T, class F>
+	template<class K, class T, class F = std::hash<K>>
 	class HashTable
 	{
 	public:

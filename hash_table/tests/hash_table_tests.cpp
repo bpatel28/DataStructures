@@ -23,7 +23,7 @@ namespace
 			}
 		}
 
-		my_lib::HashTable<std::string, int, std::hash<std::string>> table;
+		my_lib::HashTable<std::string, int> table;
 	};
 
 

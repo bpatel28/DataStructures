@@ -10,7 +10,7 @@ int main()
 {
 	try
 	{
-		my_lib::HashTable<int, int, std::hash<int>> table{};
+		my_lib::HashTable<int, int> table{};
 
 		table.Put(1, 2);
 		table.Put(2, 3);
@@ -23,7 +23,7 @@ int main()
 		table.Remove(1);
 		std::cout << "Count : " << table.Count() << std::endl;
 
-		my_lib::HashTable<std::string, int, std::hash<std::string>> strTable{};
+		my_lib::HashTable<std::string, int> strTable{};
 
 		strTable.Put("Brijesh", 5);
 		strTable.Put("Patel", 28);
@@ -32,7 +32,7 @@ int main()
 		std::cout << strTable.GetValue("Patel") << std::endl;
 		std::cout << "Count : " << strTable.Count() << std::endl;
 	}
-	catch (const std::exception& e)
+	catch (const std::exception &e)
 	{
 		std::cerr << e.what();
 	}
