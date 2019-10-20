@@ -23,19 +23,19 @@ namespace my_lib
 		//get key
 		K GetKey() const { return m_key; }
 		//set key
-		void SetKey(const K t_key) { m_key = t_key}
+		void SetKey(const K t_key) { m_key = t_key; }
 		//get left child
 		BSTNode<T, K> *GetLeftChild() const { return mp_left_child; }
 		//set left child using pointer to node
 		void SetLeftChild(BSTNode<T, K> *tp_node) { mp_left_child = tp_node; }
 		//set left by creating new node
-		void SetLeftChild(const T t_node) { mp_left_child = new BSTNode{ t_data }; }
+		void SetLeftChild(const T t_node) { mp_left_child = new BSTNode{ t_node }; }
 		//get right child
 		BSTNode<T, K> *GetRightChild() const { return mp_right_child; }
 		//set right using pointer to node
 		void SetRightChild(BSTNode<T, K> *tp_node) { mp_right_child = tp_node; }
 		//set right child by creating new node
-		void SetRightChild(const T t_node) { mp_right_child = new BSTNode{ t_data }; }
+		void SetRightChild(const T t_node) { mp_right_child = new BSTNode{ t_node }; }
 
 	private:
 		T m_data;
