@@ -35,7 +35,7 @@ namespace my_lib
 	}
 
 	template<class T, class K>
-	void MaxHeap<T, K>::CheckSize(size_t t_index = 0)
+	void MaxHeap<T, K>::CheckSize(size_t t_index)
 	{
 		assert(t_index < SIZE_MAX);
 		if (t_index > m_size)
