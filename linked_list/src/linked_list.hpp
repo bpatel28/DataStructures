@@ -34,7 +34,7 @@ namespace my_lib {
 		//remove item from the head
 		T PopFront();
 		//returns value of the first element
-		T LinkedList<T>::PeekFront() const;
+		T PeekFront() const;
 		//add item at the head of the list
 		void AddFirst(const T& t_data);
 		//remove item first item of the list
