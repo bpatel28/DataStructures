@@ -12,17 +12,6 @@ namespace my_lib
 	}
 
 	template<class T>
-	template<size_t N>
-	ArrayList<T>::ArrayList(const T(&t_data)[N]) : m_count(N), m_capacity(N * GROWTH_FACTOR) 
-	{
-		mp_data = new T[m_capacity];
-		for (size_t i = 0; i < N; ++i)
-		{
-			mp_data[i] = t_data[i];
-		}
-	}
-
-	template<class T>
 	ArrayList<T>::~ArrayList()
 	{
 		delete[] mp_data;

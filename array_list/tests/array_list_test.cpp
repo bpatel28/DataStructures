@@ -59,8 +59,19 @@ namespace
 
 	TEST(ArrayListTest, InsertShouldAddElementAtGivenIndex)
 	{
-		my_lib::ArrayList<int> intList{ { 1, 2, 3, 4, 5 } };
-		my_lib::ArrayList<std::string> strList{ {"Brijesh", "Pablo", "Hai", "Sandeep"} };
+		std::vector<int> nums = {1, 2, 3, 4, 5};
+		std::vector<std::string> names = {"Brijesh", "Pablo", "Hai", "Sandeep"};
+		my_lib::ArrayList<int> intList{ };
+		my_lib::ArrayList<std::string> strList{ };
+
+		for (auto i : nums)
+		{
+			intList.Add(i);
+		}
+		for (auto i : names)
+		{
+			strList.Add(i);
+		}
 
 		intList.Insert(0, 10);
 		intList.Insert(3, 7);
@@ -89,8 +100,19 @@ namespace
 
 	TEST(ArrayListTest, RemoveShouldRemoveItemFromEnd)
 	{
-		my_lib::ArrayList<int> intList{ { 1, 2, 3, 4, 5 } };
-		my_lib::ArrayList<std::string> strList{ {"Brijesh", "Pablo", "Hai", "Sandeep"} };
+		std::vector<int> nums = {1, 2, 3, 4, 5};
+		std::vector<std::string> names = {"Brijesh", "Pablo", "Hai", "Sandeep"};
+		my_lib::ArrayList<int> intList{};
+		my_lib::ArrayList<std::string> strList{ };
+
+		for (auto i : nums)
+		{
+			intList.Add(i);
+		}
+		for (auto i : names)
+		{
+			strList.Add(i);
+		}
 
 		intList.Remove();
 		intList.Remove();
@@ -118,8 +140,19 @@ namespace
 
 	TEST(ArrayListTest, RemoveWithParamShouldRemoveItemFromEnd)
 	{
-		my_lib::ArrayList<int> intList{ { 1, 2, 3, 4, 5 } };
-		my_lib::ArrayList<std::string> strList{ {"Brijesh", "Pablo", "Hai", "Sandeep"} };
+		std::vector<int> nums = {1, 2, 3, 4, 5};
+		std::vector<std::string> names = {"Brijesh", "Pablo", "Hai", "Sandeep"};
+		my_lib::ArrayList<int> intList{ };
+		my_lib::ArrayList<std::string> strList{ };
+
+		for (auto i : nums)
+		{
+			intList.Add(i);
+		}
+		for (auto i : names)
+		{
+			strList.Add(i);
+		}
 
 		intList.Remove(5);
 		intList.Remove(2);
@@ -146,8 +179,19 @@ namespace
 
 	TEST(ArrayListTest, GetIndexShouldGiveIndexOfGivenItem)
 	{
-		my_lib::ArrayList<int> intList{ { 1, 2, 3, 4, 5 } };
-		my_lib::ArrayList<std::string> strList{ {"Brijesh", "Pablo", "Hai", "Sandeep"} };
+		std::vector<int> nums = {1, 2, 3, 4, 5};
+		std::vector<std::string> names = {"Brijesh", "Pablo", "Hai", "Sandeep"};
+		my_lib::ArrayList<int> intList{};
+		my_lib::ArrayList<std::string> strList{};
+
+		for (auto i : nums)
+		{
+			intList.Add(i);
+		}
+		for (auto i : names)
+		{
+			strList.Add(i);
+		}
 
 		EXPECT_EQ(intList.GetIndex(1), 0);
 		EXPECT_EQ(intList.GetIndex(2), 1);
