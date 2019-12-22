@@ -22,6 +22,8 @@ namespace
 		void TearDown() override
 		{
 			delete mp_ii_tree;
+			delete mp_sc_tree;
+			delete mp_si_tree;
 		}
 
 		my_lib::BinarySearchTree<int, int> *mp_ii_tree;
@@ -244,7 +246,7 @@ namespace
 			mp_sc_tree->Insert(("A" + std::to_string(i)), 'A' + i);
 		}
 
-		//teest
+		//test
 		EXPECT_EQ(mp_ii_tree->IsBalanced(), false);
 		EXPECT_EQ(mp_sc_tree->IsBalanced(), false);
 		EXPECT_EQ(mp_si_tree->IsBalanced(), false);
@@ -253,7 +255,7 @@ namespace
 		mp_sc_tree->BalanceTree();
 		mp_si_tree->BalanceTree();
 
-		//teest
+		//test
 		EXPECT_EQ(mp_ii_tree->IsBalanced(), true);
 		EXPECT_EQ(mp_sc_tree->IsBalanced(), true);
 		EXPECT_EQ(mp_si_tree->IsBalanced(), true);

@@ -161,12 +161,23 @@ namespace my_lib
 	template<class T, class K>
 	size_t BinarySearchTree<T, K>::GetHeight(const BSTNode<T, K> *tp_node) const
 	{
-		if (!tp_node) return 0;
-		size_t left_height = 0;
-		size_t right_height = 0;
-		left_height += GetHeight(tp_node->GetLeftChild());
-		right_height += GetHeight(tp_node->GetRightChild());
-		return (left_height > right_height) ? ++left_height : ++right_height;
+		if (!tp_node) return -1;
+		
+		int leftHeight = GetHeight(tp_node->GetLeftChild());
+		if (leftHeight == INTMAX_MIN) return INTMAX_MIN;
+
+		int rightHeight = GetHeight(tp_node->GetRightChild());
+		if (rightHeight == INTMAX_MIN) return INTMAX_MIN;
+
+		int heightDiff = leftHeight - rightHeight;
+		if (abs(heightDiff) > 1)
+		{
+			return INTMAX_MIN;
+		}
+		else
+		{
+			return leftHeight > ++rightHeight ? leftHeight : ++rightHeight;
+		}
 	}
 
 	template<class T, class K>
@@ -244,8 +255,6 @@ namespace my_lib
 	template<class T, class K>
 	bool BinarySearchTree<T, K>::IsBalanced(BSTNode<T, K> *tp_node) const
 	{
-		if (!tp_node) return true;
-		int height_diff = GetHeight(tp_node->GetLeftChild()) - GetHeight(tp_node->GetRightChild());
-		return abs(height_diff) < 1;
+		return GetHeight(tp_node) != INTMAX_MIN;
 	}
 }
